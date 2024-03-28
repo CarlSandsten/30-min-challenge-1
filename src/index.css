@@ -8,6 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(45deg, #151617, #1a1f25);
 }
 
 body,
@@ -40,13 +41,14 @@ button {
   width: 100%;
   font-size: 15px;
   font-weight: 700;
-  background: #63afeb;
-  color: #20272c;
-  transition: 0.1s all;
+  background: #cacaca;
+  color: #000;
+  transition: 0.15s all ease-in-out;
+  cursor: pointer;
 }
 
 button:hover {
-  background: #5499ce;
+  background: #bababa;
 }
 
 main {

@@ -19,11 +19,86 @@
 }
 
 .subHeading {
-  margin: 20px 0 10px;
+  margin: 30px 0 10px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #0f1214;
+  box-shadow: 0 1px 0 0 #1e2326;
+}
+
+.listItem:last-of-type {
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.text {
+  margin-right: auto;
+  font-size: 17px;
+  font-weight: 500;
+  color: #c9d8eb;
+}
+
+.submitButton,
+.submitButton:hover {
+  background: linear-gradient(45deg, #468cf4, #58c339);
+}
+
+.submitButton:hover {
+  transform: scale(1.025);
+}
+
+.roundButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+}
+
+.roundButton:hover {
+  transform: scale(1.05);
+}
+
+.doneButton {
+  background: linear-gradient(45deg, #46f448, #8acf30);
+}
+.doneButton:hover {
+  background: linear-gradient(45deg, #46f448, #8acf30);
+}
+.doneButton svg,
+.moveButton svg {
+  fill: #2d4916;
+}
+
+.moveButton {
+  background: linear-gradient(45deg, #e3f446, #58c339);
+}
+.moveButton:hover {
+  background: linear-gradient(45deg, #e3f446, #58c339);
+}
+
+.deleteButton {
+  background: linear-gradient(45deg, #f44669, #f47c46);
+}
+.deleteButton:hover {
+  background: linear-gradient(45deg, #f44669, #f47c46);
+}
+.deleteButton svg {
+  fill: #5b2527;
 }
