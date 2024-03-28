@@ -10,6 +10,7 @@ Create a todo list from scratch.
 - How similar you can make it to a loosly defined design.
 - Make it responsive: 320px is the minimal device width you need to support.
 - Use clear HTML5 semantics.
+- Accessibility: color contrast.
 
 ## User stories
 
