@@ -1,0 +1,29 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  background: linear-gradient(45deg, #131516, #252a30);
+  border-radius: 12px;
+  color: #fff;
+  box-shadow: 2px 4px 16px 0px rgba(0, 0, 0, 0.3);
+}
+
+.heading {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.subHeading {
+  margin: 20px 0 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
