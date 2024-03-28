@@ -7,8 +7,20 @@ Create a todo list from scratch.
 - Using CSS without a library like Bootstrap, Tailwind, or similar. We recommend using CSS modules or just CSS files.
 - Using native and your own UI. Not Material UI, Ant design, or similar.
 - How you would handle an input and-or form in React using hooks.
+- How similar you can make it to a loosly defined design.
+- Make it responsive: 320px is the minimal device width you need to support.
 
 ## User stories
+
+- As a user, I can add a todo task and see a list of them.
+- As a user, I can mark a todo task as "done".
+- As a user, I can see what tasks are done and move them back or delete them.
+
+## Use the design
+
+Many times, we are given a loosy defined mockup design that isn't showing us the proper dimensions or how it would look like on a smaller device. This is one of those scenarios.
+
+> Sometimes we are given nothing but a rough sketch if even anything. Other times, we are working with designers with design documents and UI libraries.
 
 ## Note
 
