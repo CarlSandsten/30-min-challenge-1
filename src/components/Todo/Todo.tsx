@@ -10,33 +10,38 @@ type TodoItem = {
 const initialTodos = [
   {
     id: "1",
-    description: "Feed the dog",
+    description: "Test Todo",
     completed: false,
   },
 ];
 
-// todo: one with not fprm and ref
-// another with form no ref
 export const Todo = () => {
   const [todos, setTodos] = useState<TodoItem[]>(initialTodos);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [value, setValue] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const formRef = useRef<HTMLFormElement | null>(null);
   const completedTodos = todos.filter((todo) => todo.completed);
   const readyTodos = todos.filter((todo) => !todo.completed);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+    setDisabled(!e.target.value.length);
+  };
+
   const handleAddTodo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
+    const formData = new FormData(formRef.current!);
     const todo = formData.get("todo") as string;
     setTodos((todos) => {
+      setValue("");
+      setDisabled(true);
       return [
         { id: String(Date.now()), description: todo, completed: false },
         ...todos,
       ];
     });
-    inputRef.current!.value = "";
   };
 
-  // Toggles the complete state in a todo.
   const handleComplete = (id: string) => {
     setTodos((todos) =>
       todos.map((todo) => {
@@ -46,32 +51,30 @@ export const Todo = () => {
     );
   };
 
-  // Removes a todo from the todos list.
   const handleDelete = (id: string) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
   };
 
   return (
-    <section className={styles.card}>
+    <section className={styles.card} data-testid="todo-list">
       <h2 className={styles.heading}>Todo List</h2>
-      <form className={styles.form} onSubmit={handleAddTodo}>
-        <input ref={inputRef} type="text" name="todo" />
-        <button className={styles.submitButton} type="submit">
+      <form ref={formRef} className={styles.form} onSubmit={handleAddTodo}>
+        <input
+          onChange={handleChange}
+          type="text"
+          name="todo"
+          autoComplete="off"
+          value={value}
+        />
+        <button
+          className={styles.submitButton}
+          type="submit"
+          disabled={disabled}
+          data-testid="submit"
+        >
           Submit
         </button>
       </form>
-      {/* {todos.length > 0 && (
-        <ul>
-          {todos.map((todo) => (
-            <li key={todo.id}>
-              <p>{todo.description}</p>
-              <button onClick={() => handleComplete(todo.id)}>Done</button>
-              <button onClick={() => handleDelete(todo.id)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-      )} */}
-      {/* Ready */}
       {readyTodos.length > 0 && (
         <>
           <h3 className={styles.subHeading}>Ready</h3>
@@ -85,11 +88,9 @@ export const Todo = () => {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    height="24"
                     viewBox="0 -960 960 960"
-                    width="24"
                   >
-                    <path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                    <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
                   </svg>
                 </button>
               </li>
@@ -97,7 +98,6 @@ export const Todo = () => {
           </ul>
         </>
       )}
-      {/* Completed */}
       {completedTodos.length > 0 && (
         <>
           <h3 className={styles.subHeading}>Completed</h3>
@@ -111,9 +111,7 @@ export const Todo = () => {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    height="24"
                     viewBox="0 -960 960 960"
-                    width="24"
                   >
                     <path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z" />
                   </svg>
@@ -124,11 +122,9 @@ export const Todo = () => {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    height="24"
                     viewBox="0 -960 960 960"
-                    width="24"
                   >
-                    <path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z" />
+                    <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
                   </svg>
                 </button>
               </li>

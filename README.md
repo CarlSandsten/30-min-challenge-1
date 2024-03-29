@@ -24,18 +24,22 @@ Many times, we are given a loosy defined mockup design that isn't showing us the
 
 > Sometimes we are given nothing but a rough sketch if even anything. Other times, we are working with designers with design documents and UI libraries.
 
+You can access the assets for the UI in the `public/assets` folder.
+
 ## Note
 
 - There can be bugs! Focus on the user stories first. Bugs are OK as long as the user stories are in focus!
 - Note down the improvements and questions you would have to improve the user experience. I give you one for free: "What happens if the user adds tasks that are N characters so the list items overflow?". These are the types of questions you can add without actually fixing them - focus on the user stories as given: improvements comes in another iteration.
 - No need for extreme component writing: you don't need a component for a button, a list item, a input etc. Focus on what the user would see and interact with first, not how a developer would see how you build a UI library.
+- The state can be in-memory. No need to use localStorage or a state management library.
 
 ## Clear expectations
 
-- Rather go overtime (not more than 1 hour total) to get as close to the design as possible.
+- Rather go overtime (not more than 45 min total) to get as close to the design as possible.
 - The user stories must be all fulfilled.
 - Give a note with some UI improvements.
+- Use up to 15 min just thinking about the task before starting.
 
 ## How we assess it
 
-- We don't look at the code to begin with. We solely look at it from a user's perspective
+- We don't look at the code to begin with. We solely look at it from a user's perspective before looking at the code.

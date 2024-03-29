@@ -13,13 +13,21 @@
 
 .heading {
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 700;
   text-align: center;
 }
 
 .subHeading {
-  margin: 30px 0 10px;
+  margin: 30px 0 0;
+  font-size: 19px;
+}
+
+.text {
+  margin-right: auto;
+  font-size: 15px;
+  font-weight: 500;
+  color: #c9d8eb;
 }
 
 .form {
@@ -48,13 +56,6 @@
   box-shadow: none;
 }
 
-.text {
-  margin-right: auto;
-  font-size: 17px;
-  font-weight: 500;
-  color: #c9d8eb;
-}
-
 .submitButton,
 .submitButton:hover {
   background: linear-gradient(45deg, #468cf4, #58c339);
@@ -64,15 +65,26 @@
   transform: scale(1.025);
 }
 
+.submitButton:hover:disabled {
+  transform: none;
+  animation: 0.75s shake ease-in-out;
+}
+
 .roundButton {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 36px;
+  flex-shrink: 0;
 }
 
 .roundButton:hover {
   transform: scale(1.05);
+}
+
+.roundButton svg {
+  width: 20px;
+  height: 20px;
 }
 
 .doneButton {
@@ -101,4 +113,42 @@
 }
 .deleteButton svg {
   fill: #5b2527;
+}
+
+@media screen and (min-width: 600px) {
+  .heading {
+    font-size: 30px;
+  }
+
+  .subHeading {
+    font-size: 21px;
+  }
+
+  .text {
+    font-size: 17px;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  70% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+  87% {
+    transform: translateX(-2px);
+  }
+  95% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

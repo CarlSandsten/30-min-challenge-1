@@ -51,10 +51,26 @@ button:hover {
   background: #bababa;
 }
 
+button:disabled {
+  opacity: 0.5;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: not-allowed;
+}
+
 main {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 60px 30px;
+  padding: 80px 15px;
   min-height: 100vh;
+}
+
+@media screen and (min-width: 600px) {
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 30px;
+    min-height: 100vh;
+  }
 }
