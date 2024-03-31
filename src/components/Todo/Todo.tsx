@@ -56,7 +56,7 @@ export const Todo = () => {
   };
 
   return (
-    <section className={styles.card} data-testid="todo-list">
+    <section className={styles.card} aria-label="todo-list">
       <h2 className={styles.heading}>Todo List</h2>
       <form ref={formRef} className={styles.form} onSubmit={handleAddTodo}>
         <input
@@ -70,7 +70,6 @@ export const Todo = () => {
           className={styles.submitButton}
           type="submit"
           disabled={disabled}
-          data-testid="submit"
         >
           Submit
         </button>
