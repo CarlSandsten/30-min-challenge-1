@@ -7,16 +7,16 @@ type TodoItem = {
   completed: boolean;
 };
 
-const initialTodos = [
-  {
-    id: "1",
-    description: "Test Todo",
-    completed: false,
-  },
-];
+// const initialTodos = [
+//   {
+//     id: String(Date.now()),
+//     description: "Test Todo",
+//     completed: false,
+//   },
+// ];
 
 export const Todo = () => {
-  const [todos, setTodos] = useState<TodoItem[]>(initialTodos);
+  const [todos, setTodos] = useState<TodoItem[]>([]);
   const [value, setValue] = useState("");
   const [disabled, setDisabled] = useState(true);
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -58,7 +58,12 @@ export const Todo = () => {
   return (
     <section className={styles.card} aria-label="todo-list">
       <h2 className={styles.heading}>Todo List</h2>
-      <form ref={formRef} className={styles.form} onSubmit={handleAddTodo}>
+      <form
+        ref={formRef}
+        className={styles.form}
+        onSubmit={handleAddTodo}
+        aria-label="todo"
+      >
         <input
           onChange={handleChange}
           type="text"
@@ -77,13 +82,14 @@ export const Todo = () => {
       {readyTodos.length > 0 && (
         <>
           <h3 className={styles.subHeading}>Ready</h3>
-          <ul>
+          <ul data-testid="ready-list">
             {readyTodos.map((todo) => (
               <li key={todo.id} className={styles.listItem}>
                 <p className={styles.text}>{todo.description}</p>
                 <button
                   className={`${styles.roundButton} ${styles.doneButton}`}
                   onClick={() => handleComplete(todo.id)}
+                  aria-label="done"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -100,13 +106,14 @@ export const Todo = () => {
       {completedTodos.length > 0 && (
         <>
           <h3 className={styles.subHeading}>Completed</h3>
-          <ul>
+          <ul data-testid="completed-list">
             {completedTodos.map((todo) => (
               <li key={todo.id} className={styles.listItem}>
                 <p className={styles.text}>{todo.description}</p>
                 <button
                   className={`${styles.roundButton} ${styles.moveButton}`}
                   onClick={() => handleComplete(todo.id)}
+                  aria-label="move back"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -118,6 +125,7 @@ export const Todo = () => {
                 <button
                   className={`${styles.roundButton} ${styles.deleteButton}`}
                   onClick={() => handleDelete(todo.id)}
+                  aria-label="remove"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
